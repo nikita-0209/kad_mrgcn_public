@@ -9,6 +9,7 @@ For reproduction of the *key actor detection framework* results in our paper [Le
 
 ```python setup.py install```
 Create an environment, and install the required libraries.
+
 ``` pip install requirements.txt ```
 
 ## Modeling the Data
