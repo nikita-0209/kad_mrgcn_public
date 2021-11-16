@@ -75,7 +75,6 @@ GAUSSIAN = args['gaussian']
 POOL = args['pool']
 
 dirname = os.path.dirname(os.path.realpath(sys.argv[0]))
-print(dirname) # /Users/v_agarwal/Documents/ResearchProblems/darkweb/relational-gcn-master/rgcn
 
 
 n_class = 3
@@ -131,9 +130,9 @@ train_mask = sample_mask(idx_train, y.shape[0])
 # X = np.eye(763,763 )
 
 if POOL == False:
-    X = np.load(dirname + '/data/' + DATASET + '/chunk_concatenate.npy')
+    X = np.load(dirname + '/data/' + DATASET + '/nodeFeatures/chunk_concatenate.npy')
 else:
-    X = np.load(dirname + '/data/' + DATASET + '/chunk_avg_pool.npy')
+    X = np.load(dirname + '/data/' + DATASET + '/nodeFeatures/chunk_avg_pool.npy')
 # chunk_concatenate
 
 #Initilaising the ALL ZERO rows with Gaussian noise
@@ -170,16 +169,6 @@ H1 = GraphConvolution(HIDDEN, support, num_bases=BASES, featureless=False,
 H2 = GraphConvolution(HIDDEN*2, support, num_bases=BASES, featureless=False,
                      activation='relu',
                      W_regularizer=l2(L2))([H1] + A_in)
-# H_array = np.array(H)
-# print(H_array.shape)
-# H = GraphConvolution(HIDDEN, support, num_bases=BASES, featureless=False,
-#                      activation='relu',
-#                      W_regularizer=l2(L2))([H] + A_in)
-# print(theano.tensor.shape(H)[0])
-# print(type(H))
-# H = GraphConvolution(HIDDEN, support, num_bases=BASES, featureless=False,
-#                      activation='relu',
-#                      W_regularizer=l2(L2))([H] + A_in)
 H3 = Dropout(DO)(H2)
 Y = GraphConvolution(y_train.shape[1], support, num_bases=BASES,
                      activation='softmax')([H3] + A_in)
@@ -190,9 +179,6 @@ model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=LR) )
 # model.summary()
 preds = None
 
-#### added it to change the learning rate according to loss
-#change_lr = keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience= 5, min_lr= 0.001)
-####
 
 # Fit
 for epoch in range(1, NB_EPOCH + 1):
