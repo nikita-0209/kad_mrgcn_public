@@ -5,9 +5,17 @@ Keras-based implementation of Relational Graph Convolutional Networks for semi-s
 For reproduction of the *key actor detection framework* results in our paper [Learning to Detect: A Semi Supervised Multi-relational Graph Convolutional Network for Uncovering Key Actors on Hackforums](https://arxiv.org/abs/) (2021), see instructions below.
 
 
-## Installation
+## Setup and Dependencies
 
 ```python setup.py install```
+Create an environment, and install the required libraries.
+``` pip install requirements.txt ```
+
+## Modeling the Data
+
+```python setup.py install```
+Create an environment, and install the required libraries.
+``` pip install requirements.txt ```
 
 ## Dependencies
 
