@@ -7,25 +7,13 @@ For reproduction of the *key actor detection framework* results in our paper [Le
 
 ## Setup and Dependencies
 
-Create an environment.
+Create an environment. And run the following to intialise the RGCN framework.
 
 ```python setup.py install```
 
 Install the required libraries.
 
 ``` pip install requirements.txt ```
-
-## Modeling the Data
-
-1. We propose a user scoring metric based on three popular features, namely *popularity, activity* and *recency* and obtain ground truth labels for training samples. To get the scores run the following interactive python scripts in the following order.
-
-```evaluate_activity.ipynb
-evaluate_recency_and_popularity.ipynb
-evaluate_scores.ipynb  ```
-
-2. Our framework exploits the three popular forms of text communications entities used on hacker forums:*public posts, private messages* and *notifications*. Scripts in  ```/scripts/embeddings/ ``` are to be run to generate embeddings of diffferent textual content entities. They are finally combined using the script ```/scripts/embeddings/combine_embeddings.ipynb```
-
-3. To model the interaction patterns, we majorly focus on database information available in forms of *profile friends, notifications, public posts* and *private messages*, and constructs six different relations out of it.
 
 ## Dependencies
 
@@ -42,31 +30,6 @@ Note: It is possible to use the TensorFlow backend of keras as well. Note that k
 
 Important: Switch keras backend to Theano and disable GPU execution (GPU memory is too limited for some of the experiments). GPU speedup for sparse operations is not that essential, so running this model on CPU will still be quite fast.
 
-To replicate the experiments from our paper [1], first run (for AIFB):
-
-```
-python prepare_dataset.py -d aifb
-```
-
-
-Afterwards, train the model with:
-
-```
-python train.py -d aifb --bases 0 --hidden 16 --l2norm 0. --testing
-```
-
-
-Note that Theano performs an expensive compilation step the first time a computational graph is executed. This can take several minutes to complete.
-
-For the MUTAG dataset, run:
-
-```
-python prepare_dataset.py -d mutag
-python train.py -d mutag --bases 30 --hidden 16 --l2norm 5e-4 --testing
-```
-
-Note: Results depend on random seed and will vary between re-runs.
-
 ## Setting keras backend to Theano
 
 Create a file `~/.keras/keras.json` with the contents:
@@ -82,10 +45,53 @@ Create a file `~/.keras/keras.json` with the contents:
 
 ## Enforcing CPU execution
 
-
 You can enforce execution on CPU by hiding all GPU resources:
 ```
 CUDA_VISIBLE_DEVICES= python train.py -d aifb --bases 0 --hidden 16 --l2norm 0. --testing
+```
+
+## Modeling the Data
+
+1. #### Scores:  
+We propose a user scoring metric based on three popular features, namely *popularity, activity* and *recency* and obtain ground truth labels for training samples. To get the scores run the following interactive python scripts in the following order.
+
+``` evaluate_activity.ipynb```
+```evaluate_recency_and_popularity.ipynb```
+```evaluate_scores.ipynb ```
+
+
+2. #### User Embeddings:  
+Our framework exploits the three popular forms of text communications entities used on hacker forums:*public posts, private messages* and *notifications*. Scripts in  ```/scripts/embeddings/ ``` are to be run to generate embeddings of diffferent textual content entities. They are finally combined using the script ```/scripts/embeddings/combine_embeddings.ipynb```
+
+3. #### Relations
+To model the interaction patterns, we majorly focus on database information available in forms of *profile friends, notifications, public posts* and *private messages*, and constructs six different relations out of it. Generate these matrices with the help of scripts in ```scripts/relations/```
+
+
+## Training the Model
+
+Once you have modeled the data, the numpy arrays/csvs corresponding to scores, matrices and node features would get saved at ```kad_mrgcn_public/data/ironmarch/``` in respective folders.
+
+Afterwards, train the model with:
+
+```
+python train.py -POOL=True -e=300 --validation -l2=0.01 -lr=0.0001 -hd=64 -ldo=0.1
+```
+```POOL``` decides which variation of BERT embeddings should be used: *concatenate* or *avg pool*
+
+```e``` is the number of epochs.
+
+```l2``` is the L2 loss, which regularises the training, i.e, prevents overfitting.
+
+```lr``` is the learning rate.
+
+```hd``` is the number of neurons in the first hidden layer.
+
+```ldo``` refers to the dropout at every layer.
+
+To replicate the best experiments from our paper [1], run
+
+```
+python train.py
 ```
 
 
