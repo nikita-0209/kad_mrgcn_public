@@ -56,7 +56,9 @@ CUDA_VISIBLE_DEVICES= python train.py -d aifb --bases 0 --hidden 16 --l2norm 0. 
 We propose a user scoring metric based on three popular features, namely *popularity, activity* and *recency* and obtain ground truth labels for training samples. To get the scores run the following interactive python scripts in the following order.
 
 ``` evaluate_activity.ipynb```
+
 ```evaluate_recency_and_popularity.ipynb```
+
 ```evaluate_scores.ipynb ```
 
 
