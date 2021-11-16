@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: rgcn
+Version: 0.0.1
+Summary: Graph Convolutional Networks for (directed) relational graphs
+Home-page: UNKNOWN
+License: MIT
+Download-URL: ...
+Description: UNKNOWN
+Platform: UNKNOWN
+Provides-Extra: model_saving

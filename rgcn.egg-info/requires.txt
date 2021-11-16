@@ -1,0 +1,10 @@
+numpy
+theano
+keras
+rdflib
+scipy
+pandas
+wget
+
+[model_saving]
+h5py
