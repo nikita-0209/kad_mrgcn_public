@@ -7,16 +7,25 @@ For reproduction of the *key actor detection framework* results in our paper [Le
 
 ## Setup and Dependencies
 
+Create an environment.
+
 ```python setup.py install```
-Create an environment, and install the required libraries.
+
+Install the required libraries.
 
 ``` pip install requirements.txt ```
 
 ## Modeling the Data
 
-```python setup.py install```
-Create an environment, and install the required libraries.
-``` pip install requirements.txt ```
+1. We propose a user scoring metric based on three popular features, namely *popularity, activity* and *recency* and obtain ground truth labels for training samples. To get the scores run the following interactive python scripts in the following order.
+
+```evaluate_activity.ipynb
+evaluate_recency_and_popularity.ipynb
+evaluate_scores.ipynb  ```
+
+2. Our framework exploits the three popular forms of text communications entities used on hacker forums:*public posts, private messages* and *notifications*. Scripts in  ```/scripts/embeddings/ ``` are to be run to generate embeddings of diffferent textual content entities. They are finally combined using the script ```/scripts/embeddings/combine_embeddings.ipynb```
+
+3. To model the interaction patterns, we majorly focus on database information available in forms of *profile friends, notifications, public posts* and *private messages*, and constructs six different relations out of it.
 
 ## Dependencies
 
