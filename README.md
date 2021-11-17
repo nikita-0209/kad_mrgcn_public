@@ -47,7 +47,7 @@ Create a file `~/.keras/keras.json` with the contents:
 
 You can enforce execution on CPU by hiding all GPU resources:
 ```
-CUDA_VISIBLE_DEVICES= python train.py -d aifb --bases 0 --hidden 16 --l2norm 0. --testing
+CUDA_VISIBLE_DEVICES= python train.py -POOL=True -e=300 --validation -l2=0.01 -lr=0.0001 -hd=64 -ldo=0.1
 ```
 
 ## Modeling the Data
@@ -71,7 +71,7 @@ To model the interaction patterns, we majorly focus on database information avai
 
 ## Training the Model
 
-Once you have modeled the data, the numpy arrays/csvs corresponding to scores, matrices and node features would get saved at ```kad_mrgcn_public/data/ironmarch/``` in respective folders.
+Once you have modeled the data, the numpy arrays/csvs corresponding to scores, matrices and node features would get saved at ```kad_mrgcn_public/data/ironmarch/XX```, where ```XX``` would be ```scores, adjMatrix``` and ```nodeFeatures``` respectively.
 
 Afterwards, train the model with:
 

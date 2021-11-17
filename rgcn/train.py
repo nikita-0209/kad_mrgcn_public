@@ -86,14 +86,14 @@ n_relation = len(adjMatrix_filenames)
 
 if DATASET=='nulled':
     for r in range(n_relation):
-        A = sp.load_npz(dirname + '/data/' + DATASET +'/' + adjMatrix_filenames[r] +'.npz')
+        A = sp.load_npz(dirname + '/data/' + DATASET +'adjMatrix/' + adjMatrix_filenames[r] +'.npz')
         # print(type(A))
         adjacencies.append(A)
         A_trans = sp.csr_matrix.transpose(A)
         adjacencies.append(sp.csr_matrix(A_trans))
 else:
     for r in range(n_relation):
-        A = np.load(dirname + '/data/' + DATASET +'/' + adjMatrix_filenames[r] + '.npy')
+        A = np.load(dirname + '/data/' + DATASET +'adjMatrix/' + adjMatrix_filenames[r] + '.npy')
         adjacencies.append(sp.csr_matrix(A))
         A_trans = np.transpose(A)
         adjacencies.append(sp.csr_matrix(A_trans))
@@ -101,7 +101,7 @@ else:
 adjacencies.append(sp.identity(adjacencies[0].shape[0]).tocsr())
 
 # load scores and convert into 1-hot encoding labels
-scores = pd.read_csv(dirname + '/data/' + DATASET + '/orig_scores.csv')
+scores = pd.read_csv(dirname + '/data/' + DATASET + '/scores/orig_scores.csv')
 # print(scores["score"])
 label = np.floor(scores["score"])
 label[label==3] = 2
