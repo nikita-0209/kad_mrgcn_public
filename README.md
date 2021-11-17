@@ -7,22 +7,17 @@ For reproduction of the *key actor detection framework* results in our paper [Le
 
 ## Setup and Dependencies
 
-Create an environment. And run the following to intialise the RGCN framework.
-
-```python setup.py install```
+Create an environment.
 
 Install the required libraries.
 
 ``` pip install requirements.txt ```
 
-## Dependencies
+And run the following to intialise the RGCN framework.
+
+```python setup.py install```
 
 Important: keras 2.0 or higher is not supported as it breaks the Theano sparse matrix API. Tested with keras 1.2.1 and Theano 0.9.0, other versions might work as well.
-
-  * Theano (0.9.0)
-  * keras (1.2.1)
-  * pandas
-  * rdflib
 
 Note: It is possible to use the TensorFlow backend of keras as well. Note that keras 1.2.1 uses the TensorFlow 0.11 API. Using TensorFlow as a backend will limit the maximum allowed size of a sparse matrix and therefore some of the experiments might throw an error.
 
