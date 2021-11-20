@@ -1,0 +1,19 @@
+,mediatag_id,mediatag_name,mediatag_match,mediatag_replace,mediatag_position
+0,1,YouTube,http(?:s)?://(www.)?youtube.com/watch\?(\S+?)?v=([\d\w-_]+?)(&\S+?)?,"<iframe id=""ytplayer"" class=""EmbeddedVideo"" type=""text/html"" width=""640"" height=""390"" src=""http://youtube.com/embed/$3?html5=1&fs=1"" frameborder=""0"" allowfullscreen webkitallowfullscreen /></iframe>",0
+1,9,GameTrailers,http://www.gametrailers.com/{1}/{2}/{3},"<embed src=""http://media.mtvnservices.com/mgid:moses:$1:gametrailers.com:$3"" width=""512"" height=""288"" type=""application/x-shockwave-flash"" allowFullScreen=""true"" allowScriptAccess=""always"" base=""."" flashVars=""""></embed>",0
+2,2,Flash Movie/Game,{1}.swf,"<embed src=""$1.swf"" play=""true"" loop=""true"" quality=""best"" type=""application/x-shockwave-flash"" wmode=""transparent"" pluginspace=""http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"" />",0
+3,3,Google Video,http://video.google.com/videoplay?docid={1},"<embed style=""width:400px; height:326px;"" id=""VideoPlayback"" type=""application/x-shockwave-flash"" src=""http://video.google.com/googleplayer.swf?docId=$1&hl=en"" flashvars=""""> </embed>",0
+4,4,MySpace Video,http://www.myspace.com/video/{1}/(\d+)$,"<object width=""425px"" height=""360px"" >
+<param name=""allowScriptAccess"" value=""always""/>
+<param name=""allowFullScreen"" value=""true""/>
+<param name=""wmode"" value=""transparent""/>
+<param name=""movie"" value=""http://mediaservices.myspace.com/services/media/embed.aspx/m=$2,t=1,mt=video""/>
+<embed src=""http://mediaservices.myspace.com/services/media/embed.aspx/m=$2,t=1,mt=video"" width=""425"" height=""360"" allowFullScreen=""true"" type=""application/x-shockwave-flash"" wmode=""transparent"" allowScriptAccess=""always""></embed>
+</object>",0
+5,10,YouTu.be,http://(www.)?youtu.be/([\d\w-_]+?),"<iframe id=""ytplayer"" class=""EmbeddedVideo"" type=""text/html"" width=""640"" height=""390"" src=""http://youtube.com/embed/$2?html5=1&fs=1"" frameborder=""0"" allowfullscreen webkitallowfullscreen /></iframe>",0
+6,6,Flickr Image Set,http://www.flickr.com/photos/{1}/sets/{2}/,"<iframe align=""center"" src=""http://www.flickr.com/slideShow/index.gne?user_id=$1&set_id=$2"" frameBorder=""0"" width=""500"" height=""500""></iframe>",0
+7,7,MP3,{1}.mp3,"<object type=""application/x-shockwave-flash"" data=""{board_url}/public/mp3player.swf"" width=""300"" height=""40"">
+     <param name=""movie"" value=""{board_url}/public/mp3player.swf"" />
+     <param name=""FlashVars"" value=""mp3=$1.mp3&autoplay=0&loop=0&volume=100&showstop=1&showinfo=0"" />
+</object>",0
+8,8,Vimeo,http{1}://vimeo.com/{2},"<iframe src=""http$1://player.vimeo.com/video/$2"" class=""EmbeddedVideo"" width=""400"" height=""250"" frameborder=""0""></iframe>",0
