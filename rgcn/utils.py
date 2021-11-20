@@ -219,3 +219,38 @@ def evaluate_preds_sigmoid(preds, labels, indices):
         split_acc.append(two_class_accuracy(preds[idx_split], y_split[idx_split]))
 
     return split_loss, split_acc
+
+def label_assign(score, n_class):
+    y = np.zeros(shape=(score.shape[0], n_class))
+    for i in range(score.shape[0]):
+        if 0 < score[i]<1 :
+            y[i,0] = 1
+        elif 1 <= score[i]<2 :
+            y[i, 1] = 1
+
+        else:
+            y[i, 2] = 1
+    row, col = np.nonzero(y)
+    data = y[np.nonzero(y)]
+    y_shape = (y.shape[0], y.shape[1])
+    y_spr = sp.csr_matrix((data, (row, col)), shape=y_shape, dtype=np.int8)
+
+    return y_spr
+
+def label_assign(score, n_class):
+    y = np.zeros(shape=(score.shape[0], n_class))
+
+    for i in range(score.shape[0]):
+        if 0 < score[i]<=0.884 :
+            y[i,0] = 1
+        elif 0.884 < score[i]<=1.9208 :
+            y[i, 1] = 1
+
+        else:
+            y[i, 2] = 1
+    row, col = np.nonzero(y)
+    data = y[np.nonzero(y)]
+    y_shape = (y.shape[0], y.shape[1])
+    y_spr = sp.csr_matrix((data, (row, col)), shape=y_shape, dtype=np.int8)
+
+    return y_spr
