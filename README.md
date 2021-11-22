@@ -102,7 +102,7 @@ python train.py
 [1] Nikita Saxena, Vinti Agarwal, [Learning to Detect: A Semi Supervised Multi-relational Graph Convolutional Network for Uncovering Key Actors on Hackforums](), 2021
 
 
-## Cite
+<!-- ## Cite
 
 Please cite our paper if you use this code in your own work:
 
@@ -110,7 +110,6 @@ Please cite our paper if you use this code in your own work:
 @article{xx,
   title={Learning to Detect: A Semi SupervisedMulti-relational Graph Convolutional Network forUncovering Key Actors on Hackforums},
   author={Nikita Saxena, Vinti Agarwal},
-  <!-- journal={arXiv preprint arXiv:1703.06103}, -->
+  journal={arXiv preprint arXiv:1703.06103},
   year={2021}
-}
-```
+} -->
