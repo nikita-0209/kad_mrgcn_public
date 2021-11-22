@@ -2,7 +2,7 @@
 
 Keras-based implementation of Relational Graph Convolutional Networks for semi-supervised classification of users on (directed) relational graphs.
 
-For reproduction of the *key actor detection framework* results in our paper [Learning to Detect: A Semi Supervised Multi-relational Graph Convolutional Network for Uncovering Key Actors on Hackforums](https://arxiv.org/abs/) (2021), see instructions below.
+For reproduction of the *key actor detection framework* results in our paper [Learning to Detect: A Semi Supervised Multi-relational Graph Convolutional Network for Uncovering Key Actors on Hackforums]() (2021), see instructions below.
 
 
 ## Setup and Dependencies
