@@ -73,17 +73,22 @@ Afterwards, train the model with:
 ```
 python train.py -POOL=True -e=300 --validation -l2=0.01 -lr=0.0001 -hd=64 -ldo=0.1
 ```
-1. ```POOL``` decides which variation of BERT embeddings should be used: *concatenate* or *avg pool*
+1. ```config``` decides which variation of BERT embeddings should be used: *concatenate* or *avg pool*
 
-2. ```e``` is the number of epochs.
+2. ```numHlayers``` refers to the number of the layers to be used.
 
-3. ```l2``` is the L2 loss, which regularises the training, i.e, prevents overfitting.
+3. ```hidden``` is the number of neurons in the first hidden layer.
 
-4. ```lr``` is the learning rate.
+4. ```hidden2``` is the number of neurons in the second hidden layer.
 
-5. ```hd``` is the number of neurons in the first hidden layer.
+5. ```e``` is the number of epochs.
 
-6. ```ldo``` refers to the dropout at every layer.
+6. ```l2``` is the L2 loss, which regularises the training, i.e, prevents overfitting.
+
+7. ```lr``` is the learning rate.
+
+8. ```ldo``` refers to the dropout at every layer.
+
 
 To replicate the best experiments from our paper [1], run
 
